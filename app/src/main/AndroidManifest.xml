@@ -3,6 +3,8 @@
     package="com.ns.greg.basearchitecture"
     >
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+
   <application
       android:name=".DemoApplication"
       android:allowBackup="true"
