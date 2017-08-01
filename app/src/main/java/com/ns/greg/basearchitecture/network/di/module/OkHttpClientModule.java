@@ -1,4 +1,4 @@
-package com.ns.greg.basearchitecture.di;
+package com.ns.greg.basearchitecture.network.di.module;
 
 import dagger.Module;
 import dagger.Provides;

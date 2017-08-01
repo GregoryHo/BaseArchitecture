@@ -1,8 +1,9 @@
 package com.ns.greg.basearchitecture;
 
-import com.ns.greg.basearchitecture.di.DaggerNetworkComponent;
-import com.ns.greg.basearchitecture.di.NetworkComponent;
-import com.ns.greg.basearchitecture.di.OkHttpManagerModule;
+import com.ns.greg.basearchitecture.network.di.component.DaggerNetworkComponent;
+import com.ns.greg.basearchitecture.network.di.component.NetworkComponent;
+import com.ns.greg.basearchitecture.network.di.module.OkHttpClientModule;
+import com.ns.greg.basearchitecture.network.di.module.OkHttpManagerModule;
 import com.ns.greg.library.base_architecture.main.BaseApplication;
 
 /**
@@ -18,8 +19,8 @@ public class DemoApplication extends BaseApplication {
     super.onCreate();
 
     networkComponent = DaggerNetworkComponent.builder()
-        .applicationComponent(getApplicationComponent())
         .okHttpManagerModule(new OkHttpManagerModule())
+        .okHttpClientModule(new OkHttpClientModule())
         .build();
   }
 
