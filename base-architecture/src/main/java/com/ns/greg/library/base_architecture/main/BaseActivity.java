@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import javax.inject.Inject;
+import com.ns.greg.library.base_architecture.main.di.component.ApplicationComponent;
 
 /**
  * @author Gregory
@@ -12,15 +12,17 @@ import javax.inject.Inject;
  */
 public class BaseActivity extends AppCompatActivity {
 
-  @Inject SharedPreferences sharedPreference;
-
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    ((BaseApplication) getApplication()).component().inject(this);
+    getApplicationComponent().inject(this);
+  }
+
+  protected ApplicationComponent getApplicationComponent() {
+    return ((BaseApplication) getApplication()).getApplicationComponent();
   }
 
   protected SharedPreferences getSharedPreference() {
-    return sharedPreference;
+    return getApplicationComponent().sharedPreferences();
   }
 }

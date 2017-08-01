@@ -1,4 +1,4 @@
-package com.ns.greg.library.base_architecture.main.dagger;
+package com.ns.greg.library.base_architecture.main.di.module;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,7 +11,7 @@ import javax.inject.Singleton;
  * @author Gregory
  * @since 2017/7/31
  */
-@Module(includes = AndroidModule.class) public class SharedPreferenceModule {
+@Module(includes = ApplicationModule.class) public class SharedPreferenceModule {
 
   @Provides @Singleton SharedPreferences providesSharedPreference(Context context) {
     return PreferenceManager.getDefaultSharedPreferences(context);

@@ -1,10 +1,10 @@
 package com.ns.greg.library.base_architecture.main;
 
 import android.app.Application;
-import com.ns.greg.library.base_architecture.main.dagger.AndroidModule;
-import com.ns.greg.library.base_architecture.main.dagger.ApplicationComponent;
-import com.ns.greg.library.base_architecture.main.dagger.DaggerApplicationComponent;
-import com.ns.greg.library.base_architecture.main.dagger.SharedPreferenceModule;
+import com.ns.greg.library.base_architecture.main.di.component.ApplicationComponent;
+import com.ns.greg.library.base_architecture.main.di.component.DaggerApplicationComponent;
+import com.ns.greg.library.base_architecture.main.di.module.ApplicationModule;
+import com.ns.greg.library.base_architecture.main.di.module.SharedPreferenceModule;
 
 /**
  * @author Gregory
@@ -12,20 +12,18 @@ import com.ns.greg.library.base_architecture.main.dagger.SharedPreferenceModule;
  */
 public class BaseApplication extends Application {
 
-  private final ApplicationComponent applicationComponent = createComponent();
+  private ApplicationComponent applicationComponent;
 
   @Override public void onCreate() {
     super.onCreate();
-  }
 
-  private ApplicationComponent createComponent() {
-    return DaggerApplicationComponent.builder()
-        .androidModule(new AndroidModule(this))
+    applicationComponent = DaggerApplicationComponent.builder()
+        .applicationModule(new ApplicationModule(this))
         .sharedPreferenceModule(new SharedPreferenceModule())
         .build();
   }
 
-  public ApplicationComponent component() {
+  public ApplicationComponent getApplicationComponent() {
     return applicationComponent;
   }
 }
