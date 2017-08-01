@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import com.ns.greg.library.base_architecture.main.di.component.ApplicationComponent;
+import com.ns.greg.library.base_architecture.main.di.module.ActivityModule;
 
 /**
  * @author Gregory
@@ -24,5 +25,9 @@ public class BaseActivity extends AppCompatActivity {
 
   protected SharedPreferences getSharedPreference() {
     return getApplicationComponent().sharedPreferences();
+  }
+
+  protected ActivityModule getActivityModule() {
+    return new ActivityModule(this);
   }
 }
