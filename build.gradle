@@ -54,4 +54,13 @@ ext {
   squareDependencies = [okHttp              : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
                         butterKnife         : "com.jakewharton:butterknife:${butterKnifeVersion}",
                         butterKnifeProcessor: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"]
+
+  fastHookVersion = '1.1.13'
+  fancyLoggerVersion = '1.0.8'
+  fastDialogVersion = '1.0.2'
+  fastRecyclerViewVersion = '1.0.2'
+  gregDependencies = [fastHook        : "greg.library.fasthook:fast-hook:${fastHookVersion}",
+                      fancyLogger     : "greg.library.fancy-logger:fancy-logger:${fancyLoggerVersion}",
+                      fastDialog      : "greg.library.fastdialogfragment:fast-dialogfragment:${fastDialogVersion}",
+                      fastRecyclerView: "greg.library.fast-light-recyclerview:fast-light-recyclerview:${fastRecyclerViewVersion}"]
 }

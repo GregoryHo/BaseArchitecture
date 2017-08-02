@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.widget.TextView;
 import com.ns.greg.basearchitecture.network.di.component.NetworkComponent;
 import com.ns.greg.basearchitecture.network.OkHttpManager;
-import com.ns.greg.library.base_architecture.main.BaseActivity;
+import com.ns.greg.library.base_architecture.BaseActivity;
 import javax.inject.Inject;
 
 /**
@@ -18,6 +18,7 @@ public class DemoActivity extends BaseActivity {
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setTheme(R.style.AppTheme);
     setContentView(R.layout.main_demo);
 
     // Extends from base-architecture
