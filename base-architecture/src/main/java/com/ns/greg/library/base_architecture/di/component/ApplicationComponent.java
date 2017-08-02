@@ -1,7 +1,7 @@
 package com.ns.greg.library.base_architecture.main.di.component;
 
 import android.content.SharedPreferences;
-import com.ns.greg.library.base_architecture.main.BaseActivity;
+import com.ns.greg.library.base_architecture.BaseActivity;
 import com.ns.greg.library.base_architecture.main.di.module.ApplicationModule;
 import com.ns.greg.library.base_architecture.main.di.module.SharedPreferenceModule;
 import dagger.Component;

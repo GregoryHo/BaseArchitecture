@@ -1,4 +1,4 @@
-package com.ns.greg.library.base_architecture.main;
+package com.ns.greg.library.base_architecture;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
