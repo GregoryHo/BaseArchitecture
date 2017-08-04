@@ -1,10 +1,10 @@
 package com.ns.greg.library.base_architecture;
 
 import android.app.Application;
-import com.ns.greg.library.base_architecture.main.di.component.ApplicationComponent;
-import com.ns.greg.library.base_architecture.main.di.component.DaggerApplicationComponent;
-import com.ns.greg.library.base_architecture.main.di.module.ApplicationModule;
-import com.ns.greg.library.base_architecture.main.di.module.SharedPreferenceModule;
+import com.ns.greg.library.base_architecture.di.component.ApplicationComponent;
+import com.ns.greg.library.base_architecture.di.component.DaggerApplicationComponent;
+import com.ns.greg.library.base_architecture.di.module.ApplicationModule;
+import com.ns.greg.library.base_architecture.di.module.SharedPreferenceModule;
 
 /**
  * @author Gregory

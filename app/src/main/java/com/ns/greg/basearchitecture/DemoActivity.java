@@ -2,19 +2,28 @@ package com.ns.greg.basearchitecture;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.TextView;
-import com.ns.greg.basearchitecture.network.di.component.NetworkComponent;
-import com.ns.greg.basearchitecture.network.OkHttpManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.widget.Toast;
+import com.ns.greg.basearchitecture.hook.di.component.DaggerExecutorComponent;
+import com.ns.greg.basearchitecture.hook.di.component.ExecutorComponent;
+import com.ns.greg.basearchitecture.hook.di.module.ExecutorModule;
+import com.ns.greg.basearchitecture.user.LoginFragment;
+import com.ns.greg.basearchitecture.user.SignUpFragment;
 import com.ns.greg.library.base_architecture.BaseActivity;
-import javax.inject.Inject;
+import com.ns.greg.library.base_architecture.di.HasComponent;
+import com.ns.greg.library.easy_viewpager.EasyViewPager;
+import com.ns.greg.library.easy_viewpager.adapter.BaseFragmentStatePagerAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Gregory
  * @since 2017/7/31
  */
-public class DemoActivity extends BaseActivity {
+public class DemoActivity extends BaseActivity implements HasComponent<ExecutorComponent> {
 
-  @Inject OkHttpManager okHttpManager;
+  private ExecutorComponent executorComponent;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,20 +36,42 @@ public class DemoActivity extends BaseActivity {
       getSharedPreference().edit().putString("DEMO", "Dagger is interesting").apply();
     }
 
-    ((TextView) findViewById(R.id.tv_demo)).setText(demo);
+    Toast.makeText(getApplicationContext(), demo, Toast.LENGTH_SHORT).show();
 
-    // Custom dependencies
-    getNetworkComponent().inject(this);
-    for (int i = 0; i < 10; i++) {
-      if (i % 2 == 0) {
-        okHttpManager.request("https://www.yahoo.com", getNetworkComponent().okHttpClient());
-      } else {
-        okHttpManager.request("https://www.google.com", getNetworkComponent().okHttpClient());
-      }
-    }
+    executorComponent = DaggerExecutorComponent.builder()
+        .applicationComponent(getApplicationComponent())
+        .activityModule(getActivityModule())
+        .executorModule(new ExecutorModule())
+        .build();
+
+    initViewPager();
   }
 
-  protected NetworkComponent getNetworkComponent() {
-    return ((DemoApplication) getApplication()).getNetworkComponent();
+  private void initViewPager() {
+    List<Fragment> fragments = new ArrayList<>();
+    fragments.add(new SignUpFragment());
+    fragments.add(new LoginFragment());
+
+    EasyViewPager viewPager = (EasyViewPager) findViewById(R.id.ViewPager);
+    viewPager.setAdapter(new DemoAdapter(getSupportFragmentManager(), fragments));
+  }
+
+  @Override public ExecutorComponent getComponent() {
+    return executorComponent;
+  }
+
+  private static class DemoAdapter extends BaseFragmentStatePagerAdapter {
+
+    DemoAdapter(FragmentManager fm) {
+      super(fm);
+    }
+
+    DemoAdapter(FragmentManager fm, Fragment fragment) {
+      super(fm, fragment);
+    }
+
+    DemoAdapter(FragmentManager fm, List<Fragment> fragments) {
+      super(fm, fragments);
+    }
   }
 }

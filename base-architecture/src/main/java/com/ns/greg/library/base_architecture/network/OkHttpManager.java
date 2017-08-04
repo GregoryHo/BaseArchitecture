@@ -1,7 +1,9 @@
-package com.ns.greg.basearchitecture.network;
+package com.ns.greg.library.base_architecture.network;
 
 import android.support.annotation.NonNull;
 import java.io.IOException;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -13,16 +15,20 @@ import okhttp3.Response;
  * @author Gregory
  * @since 2017/7/31
  */
-public class OkHttpManager {
+@Singleton public class OkHttpManager {
 
-  public void request(String url, OkHttpClient okHttpClient) {
+  @Inject OkHttpManager() {
+
+  }
+
+  public void request(String url) {
     HttpUrl httpUrl = HttpUrl.parse(url);
     if (httpUrl == null) {
       return;
     }
 
     Request request = new Request.Builder().url(httpUrl.toString()).build();
-    okHttpClient.newCall(request).enqueue(new Callback() {
+    new OkHttpClient().newCall(request).enqueue(new Callback() {
       @Override public void onFailure(@NonNull Call call, @NonNull IOException e) {
         System.out.println("onFailure, " + "call: [" + call + "], e: [" + e + "]");
       }

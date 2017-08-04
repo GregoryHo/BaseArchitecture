@@ -59,8 +59,10 @@ ext {
   fancyLoggerVersion = '1.0.8'
   fastDialogVersion = '1.0.2'
   fastRecyclerViewVersion = '1.0.2'
+  easyViewPagerVersion = '1.0.0'
   gregDependencies = [fastHook        : "greg.library.fasthook:fast-hook:${fastHookVersion}",
                       fancyLogger     : "greg.library.fancy-logger:fancy-logger:${fancyLoggerVersion}",
                       fastDialog      : "greg.library.fastdialogfragment:fast-dialogfragment:${fastDialogVersion}",
-                      fastRecyclerView: "greg.library.fast-light-recyclerview:fast-light-recyclerview:${fastRecyclerViewVersion}"]
+                      fastRecyclerView: "greg.library.fast-light-recyclerview:fast-light-recyclerview:${fastRecyclerViewVersion}",
+                      easyViewPager   : "greg.library.easy-viewpager:easy-viewpager:${easyViewPagerVersion}"]
 }

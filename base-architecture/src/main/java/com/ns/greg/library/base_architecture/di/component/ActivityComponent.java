@@ -1,8 +1,8 @@
-package com.ns.greg.library.base_architecture.main.di.component;
+package com.ns.greg.library.base_architecture.di.component;
 
 import android.app.Activity;
-import com.ns.greg.library.base_architecture.main.di.PerActivity;
-import com.ns.greg.library.base_architecture.main.di.module.ActivityModule;
+import com.ns.greg.library.base_architecture.di.PerActivity;
+import com.ns.greg.library.base_architecture.di.module.ActivityModule;
 import dagger.Component;
 
 /**

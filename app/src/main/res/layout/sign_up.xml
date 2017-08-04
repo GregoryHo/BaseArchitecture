@@ -5,10 +5,16 @@
     android:orientation="vertical"
     >
 
-  <com.ns.greg.library.easy_viewpager.EasyViewPager
-      android:id="@+id/ViewPager"
+  <EditText
+      android:id="@+id/user_et"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="wrap_content"
+      />
+
+  <EditText
+      android:id="@+id/password_et"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       />
 
 </LinearLayout>

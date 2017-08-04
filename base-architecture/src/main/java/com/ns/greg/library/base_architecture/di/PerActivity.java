@@ -1,4 +1,4 @@
-package com.ns.greg.library.base_architecture.main.di;
+package com.ns.greg.library.base_architecture.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

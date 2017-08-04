@@ -2,6 +2,12 @@ apply plugin: 'com.android.application'
 
 def ext = rootProject.extensions.getByName("ext");
 
+repositories {
+  maven {
+    url 'https://dl.bintray.com/gregoryho/maven'
+  }
+}
+
 android {
   compileSdkVersion ext["compileSdkVersion"]
   buildToolsVersion ext["buildToolsVersion"]
@@ -37,8 +43,9 @@ dependencies {
   // Gson dependencies
   compile ext["googleDependencies"]["gson"]
 
-  // OkHttp dependencies
-  compile ext["squareDependencies"]["okHttp"]
+  // Greg dependencies
+  compile ext["gregDependencies"]["easyViewPager"]
+  compile ext["gregDependencies"]["fastHook"]
 
   compile project(path: ':base-architecture')
 
@@ -49,6 +56,5 @@ dependencies {
     // Resolved versions for app (1.3.9) and test app (2.0.1) differ. See http://g.co/androidstudio/app-test-app-conflict for details.
     exclude group: 'com.google.code.findbugs'
   })
-  compile 'com.android.support:appcompat-v7:25.3.1'
   testCompile 'junit:junit:4.12'
 }
