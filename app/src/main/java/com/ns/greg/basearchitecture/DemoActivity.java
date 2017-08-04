@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
-import com.ns.greg.basearchitecture.hook.di.component.DaggerExecutorComponent;
-import com.ns.greg.basearchitecture.hook.di.component.ExecutorComponent;
-import com.ns.greg.basearchitecture.hook.di.module.ExecutorModule;
+import com.ns.greg.basearchitecture.di.component.DaggerDemoComponent;
+import com.ns.greg.basearchitecture.di.component.DemoComponent;
+import com.ns.greg.basearchitecture.di.module.ExecutorModule;
 import com.ns.greg.basearchitecture.user.LoginFragment;
 import com.ns.greg.basearchitecture.user.SignUpFragment;
 import com.ns.greg.library.base_architecture.BaseActivity;
@@ -21,9 +21,9 @@ import java.util.List;
  * @author Gregory
  * @since 2017/7/31
  */
-public class DemoActivity extends BaseActivity implements HasComponent<ExecutorComponent> {
+public class DemoActivity extends BaseActivity implements HasComponent<DemoComponent> {
 
-  private ExecutorComponent executorComponent;
+  private DemoComponent demoComponent;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -31,20 +31,29 @@ public class DemoActivity extends BaseActivity implements HasComponent<ExecutorC
     setContentView(R.layout.main_demo);
 
     // Extends from base-architecture
-    String demo = getApplicationComponent().sharedPreferences().getString("DEMO", "");
-    if (demo.isEmpty()) {
-      getSharedPreference().edit().putString("DEMO", "Dagger is interesting").apply();
-    }
+    sharedPreferenceDemo();
+    networkDemo();
 
-    Toast.makeText(getApplicationContext(), demo, Toast.LENGTH_SHORT).show();
-
-    executorComponent = DaggerExecutorComponent.builder()
+    demoComponent = DaggerDemoComponent.builder()
         .applicationComponent(getApplicationComponent())
         .activityModule(getActivityModule())
         .executorModule(new ExecutorModule())
         .build();
 
     initViewPager();
+  }
+
+  private void networkDemo() {
+    getOkHttpManager().request("https://www.yahoo.com");
+  }
+
+  private void sharedPreferenceDemo() {
+    String demo = getApplicationComponent().sharedPreferences().getString("DEMO", "");
+    if (demo.isEmpty()) {
+      getSharedPreference().edit().putString("DEMO", "Dagger is interesting").apply();
+    }
+
+    Toast.makeText(getApplicationContext(), demo, Toast.LENGTH_SHORT).show();
   }
 
   private void initViewPager() {
@@ -56,8 +65,8 @@ public class DemoActivity extends BaseActivity implements HasComponent<ExecutorC
     viewPager.setAdapter(new DemoAdapter(getSupportFragmentManager(), fragments));
   }
 
-  @Override public ExecutorComponent getComponent() {
-    return executorComponent;
+  @Override public DemoComponent getComponent() {
+    return demoComponent;
   }
 
   private static class DemoAdapter extends BaseFragmentStatePagerAdapter {

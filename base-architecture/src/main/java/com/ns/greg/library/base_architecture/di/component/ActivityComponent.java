@@ -1,6 +1,6 @@
 package com.ns.greg.library.base_architecture.di.component;
 
-import android.app.Activity;
+import com.ns.greg.library.base_architecture.BaseActivity;
 import com.ns.greg.library.base_architecture.di.PerActivity;
 import com.ns.greg.library.base_architecture.di.module.ActivityModule;
 import dagger.Component;
@@ -13,5 +13,5 @@ import dagger.Component;
 public interface ActivityComponent {
 
   // Exposed to sub-graphs
-  Activity activity();
+  BaseActivity activity();
 }

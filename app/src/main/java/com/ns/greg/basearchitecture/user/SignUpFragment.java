@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import com.ns.greg.basearchitecture.DemoActivity;
 import com.ns.greg.basearchitecture.R;
 import com.ns.greg.basearchitecture.hook.ThreadExecutor;
-import com.ns.greg.basearchitecture.hook.di.component.ExecutorComponent;
+import com.ns.greg.basearchitecture.di.component.DemoComponent;
+import com.ns.greg.library.base_architecture.network.OkHttpManager;
 import com.ns.greg.library.fasthook.BaseRunnable;
 import com.ns.greg.library.fasthook.functions.EasyRun0;
 import javax.inject.Inject;
@@ -25,11 +26,7 @@ public class SignUpFragment extends Fragment {
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getActivityComponent().inject(this);
-  }
-
-  private ExecutorComponent getActivityComponent() {
-    return ((DemoActivity) getActivity()).getComponent();
+    getExecutorComponent().inject(this);
   }
 
   @Nullable @Override
@@ -44,11 +41,22 @@ public class SignUpFragment extends Fragment {
 
   @Override public void onResume() {
     super.onResume();
+
+    getOkHttpManager().request("https://www.google.com");
+
     threadExecutor.addTask(new BaseRunnable<EasyRun0<Boolean>>() {
       @Override protected EasyRun0<Boolean> runImp() throws Exception {
         System.out.println("Lets' run!");
         return new EasyRun0<>(true);
       }
     }).start();
+  }
+
+  private OkHttpManager getOkHttpManager() {
+    return getExecutorComponent().activity().getOkHttpManager();
+  }
+
+  private DemoComponent getExecutorComponent() {
+    return ((DemoActivity) getActivity()).getComponent();
   }
 }

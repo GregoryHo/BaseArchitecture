@@ -1,4 +1,4 @@
-package com.ns.greg.basearchitecture.hook.di.module;
+package com.ns.greg.basearchitecture.di.module;
 
 import com.ns.greg.basearchitecture.hook.ThreadExecutor;
 import com.ns.greg.library.base_architecture.di.PerActivity;

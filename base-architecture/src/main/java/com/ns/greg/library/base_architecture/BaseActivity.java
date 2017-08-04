@@ -18,30 +18,18 @@ public class BaseActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
 
     getApplicationComponent().inject(this);
-
-    networkDemo();
-  }
-
-  private void networkDemo() {
-    for (int i = 0; i < 10; i++) {
-      if (i % 2 == 0) {
-        getOkHttpManager().request("https://www.yahoo.com");
-      } else {
-        getOkHttpManager().request("https://www.google.com");
-      }
-    }
   }
 
   protected ApplicationComponent getApplicationComponent() {
     return ((BaseApplication) getApplication()).getApplicationComponent();
   }
 
-  protected OkHttpManager getOkHttpManager() {
-    return getApplicationComponent().okHttpManager();
+  public SharedPreferences getSharedPreference() {
+    return getApplicationComponent().sharedPreferences();
   }
 
-  protected SharedPreferences getSharedPreference() {
-    return getApplicationComponent().sharedPreferences();
+  public OkHttpManager getOkHttpManager() {
+    return getApplicationComponent().okHttpManager();
   }
 
   protected ActivityModule getActivityModule() {

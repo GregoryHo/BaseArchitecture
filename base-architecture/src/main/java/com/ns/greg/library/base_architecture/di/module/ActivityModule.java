@@ -1,6 +1,6 @@
 package com.ns.greg.library.base_architecture.di.module;
 
-import android.app.Activity;
+import com.ns.greg.library.base_architecture.BaseActivity;
 import com.ns.greg.library.base_architecture.di.PerActivity;
 import dagger.Module;
 import dagger.Provides;
@@ -11,13 +11,13 @@ import dagger.Provides;
  */
 @Module public class ActivityModule {
 
-  private Activity activity;
+  private BaseActivity activity;
 
-  public ActivityModule(Activity activity) {
+  public ActivityModule(BaseActivity activity) {
     this.activity = activity;
   }
 
-  @Provides @PerActivity Activity providesActivity() {
+  @Provides @PerActivity BaseActivity providesActivity() {
     return activity;
   }
 }

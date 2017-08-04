@@ -12,10 +12,6 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 public class ThreadExecutor extends BaseThreadManager<ThreadPoolExecutor> {
 
-  public ThreadExecutor() {
-
-  }
-
   @Override protected ThreadPoolExecutor createThreadPool() {
     return ThreadExecutorFactory.newCoreSizeThreadPool();
   }

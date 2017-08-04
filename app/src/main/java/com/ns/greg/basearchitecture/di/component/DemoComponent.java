@@ -1,6 +1,6 @@
-package com.ns.greg.basearchitecture.hook.di.component;
+package com.ns.greg.basearchitecture.di.component;
 
-import com.ns.greg.basearchitecture.hook.di.module.ExecutorModule;
+import com.ns.greg.basearchitecture.di.module.ExecutorModule;
 import com.ns.greg.basearchitecture.user.SignUpFragment;
 import com.ns.greg.library.base_architecture.di.PerActivity;
 import com.ns.greg.library.base_architecture.di.component.ActivityComponent;
@@ -14,7 +14,7 @@ import dagger.Component;
  */
 @PerActivity @Component(dependencies = ApplicationComponent.class, modules = {
     ActivityModule.class, ExecutorModule.class
-}) public interface ExecutorComponent extends ActivityComponent {
+}) public interface DemoComponent extends ActivityComponent {
 
   void inject(SignUpFragment signUpFragment);
 }
