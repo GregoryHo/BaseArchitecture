@@ -1,8 +1,6 @@
 package com.ns.greg.library.base_architecture.module;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -20,10 +18,10 @@ import javax.inject.Singleton;
 
   /**
    * Gets the String from {@link SharedPreferences}
+   * with specific key
    *
-   * @param key
-   * @param defaultValue
-   * @return string
+   * @param key specific key
+   * @param defaultValue default value
    */
   public String getPrefString(String key, String defaultValue) {
     return sharedPreferences.getString(key, defaultValue);
@@ -31,89 +29,111 @@ import javax.inject.Singleton;
 
   /**
    * Sets the String into {@link SharedPreferences}
+   *
+   * @param key specific key
+   * @param value stored value
    */
-  public void setPrefString(Context context, String key, String value) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public void setPrefString(String key, String value) {
     sharedPreferences.edit().putString(key, value).apply();
   }
 
   /**
-   * get the boolean form {@link SharedPreferences}
+   * Gets the boolean form {@link SharedPreferences}
+   * with specific key
+   *
+   * @param key specific key
+   * @param defaultValue default value
    */
-  public boolean getPrefBoolean(Context context, String key, boolean defaultValue) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public boolean getPrefBoolean(String key, boolean defaultValue) {
     return sharedPreferences.getBoolean(key, defaultValue);
   }
 
   /**
-   * set the boolean into {@link SharedPreferences}
+   * Sets the boolean into {@link SharedPreferences}
+   *
+   * @param key specific key
+   * @param value stored value
    */
-  public void setPrefBoolean(Context context, String key, boolean value) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public void setPrefBoolean(String key, boolean value) {
     sharedPreferences.edit().putBoolean(key, value).apply();
   }
 
   /**
-   * get the Integer form {@link SharedPreferences}
+   * Gets the Integer form {@link SharedPreferences}
+   * with specific key
+   *
+   * @param key specific key
+   * @param defaultValue default value
    */
-  public int getPrefInt(Context context, String key, int defaultValue) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public int getPrefInt(String key, int defaultValue) {
     return sharedPreferences.getInt(key, defaultValue);
   }
 
   /**
-   * set the Integer into {@link SharedPreferences}
+   * Sets the Integer into {@link SharedPreferences}
+   *
+   * @param key specific key
+   * @param value stored value
    */
-  public void setPrefInt(Context context, String key, int value) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public void setPrefInt(String key, int value) {
     sharedPreferences.edit().putInt(key, value).apply();
   }
 
   /**
-   * get the Float from {@link SharedPreferences}
+   * Gets the Float from {@link SharedPreferences}
+   * with specific key
+   *
+   * @param key specific key
+   * @param defaultValue default value
    */
-  public float getPrefFloat(Context context, String key, float defaultValue) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public float getPrefFloat(String key, float defaultValue) {
     return sharedPreferences.getFloat(key, defaultValue);
   }
 
   /**
-   * set the Float into {@link SharedPreferences}
+   * Sets the Float into {@link SharedPreferences}
+   *
+   * @param key specific key
+   * @param value stored value
    */
-  public void setPrefFloat(Context context, String key, float value) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public void setPrefFloat(String key, float value) {
     sharedPreferences.edit().putFloat(key, value).apply();
   }
 
   /**
-   * get the Long from {@link SharedPreferences}
+   * Gets the Long from {@link SharedPreferences}
+   * with specific key
+   *
+   * @param key specific key
+   * @param defaultValue default value
    */
-  public long getPrefLong(Context context, String key, long defaultValue) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public long getPrefLong(String key, long defaultValue) {
     return sharedPreferences.getLong(key, defaultValue);
   }
 
   /**
-   * set the Long into {@link SharedPreferences}
+   * Sets the Long into {@link SharedPreferences}
+   *
+   * @param key specific key
+   * @param value stored value
    */
-  public void setSettingLong(Context context, String key, long value) {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public void setSettingLong(String key, long value) {
     sharedPreferences.edit().putLong(key, value).apply();
   }
 
   /**
-   * check if {@link SharedPreferences} contains the key
+   * Checks if {@link SharedPreferences} contains the specific key
+   *
+   * @param key specific key
    */
-  public boolean hasKey(Context context, String key) {
-    return PreferenceManager.getDefaultSharedPreferences(context).contains(key);
+  public boolean hasKey(String key) {
+    return sharedPreferences.contains(key);
   }
 
   /**
-   * clear {@link SharedPreferences}
+   * Clears {@link SharedPreferences}
    */
-  public void clearPreference(Context context, SharedPreferences p) {
-    SharedPreferences.Editor editor = p.edit();
-    editor.clear();
-    editor.apply();
+  public void clearPreferences() {
+    sharedPreferences.edit().clear().apply();
   }
 }
