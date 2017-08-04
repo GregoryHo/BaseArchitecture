@@ -37,12 +37,16 @@ dependencies {
   // Android dependencies
   compile ext["supportDependencies"]["appCompat"]
 
-  // Dagger dependencies
+  // Google dependencies
+  // Dagger
   compile ext["googleDependencies"]["dagger"]
   annotationProcessor ext["googleDependencies"]["daggerProcessor"]
   compile ext["googleDependencies"]["daggerAndroid"]
   compile ext["googleDependencies"]["daggerAndroidSupport"]
   annotationProcessor ext["googleDependencies"]["daggerAndroidProcessor"]
+  // Gson
+  compile ext["googleDependencies"]["gson"]
+
 
   // OkHttp dependencies
   compile ext["squareDependencies"]["okHttp"]

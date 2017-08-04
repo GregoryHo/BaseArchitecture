@@ -4,7 +4,6 @@ import android.app.Application;
 import com.ns.greg.library.base_architecture.di.component.ApplicationComponent;
 import com.ns.greg.library.base_architecture.di.component.DaggerApplicationComponent;
 import com.ns.greg.library.base_architecture.di.module.ApplicationModule;
-import com.ns.greg.library.base_architecture.di.module.SharedPreferenceModule;
 
 /**
  * @author Gregory
@@ -12,14 +11,15 @@ import com.ns.greg.library.base_architecture.di.module.SharedPreferenceModule;
  */
 public class BaseApplication extends Application {
 
-  private ApplicationComponent applicationComponent;
+  private final ApplicationComponent applicationComponent = createComponent();
 
   @Override public void onCreate() {
     super.onCreate();
+  }
 
-    applicationComponent = DaggerApplicationComponent.builder()
+  private ApplicationComponent createComponent() {
+    return DaggerApplicationComponent.builder()
         .applicationModule(new ApplicationModule(this))
-        .sharedPreferenceModule(new SharedPreferenceModule())
         .build();
   }
 

@@ -1,4 +1,4 @@
-package com.ns.greg.library.base_architecture.network;
+package com.ns.greg.library.base_architecture.module;
 
 import android.support.annotation.NonNull;
 import java.io.IOException;

@@ -9,11 +9,11 @@ import javax.inject.Singleton;
 
 /**
  * @author Gregory
- * @since 2017/7/31
+ * @since 2017/8/4
  */
 @Module(includes = ApplicationModule.class) public class SharedPreferenceModule {
 
-  @Provides @Singleton SharedPreferences providesSharedPreference(Context context) {
+  @Provides @Singleton SharedPreferences providesSharedPreferences(Context context) {
     return PreferenceManager.getDefaultSharedPreferences(context);
   }
 }

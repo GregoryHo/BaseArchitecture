@@ -24,7 +24,7 @@ public class AdapterHelper {
     return null;
   }
 
-  public static <T> boolean checkIsLegalIndex(Collection<T> itemList, int index) {
+  public static boolean checkIsLegalIndex(Collection itemList, int index) {
     return index >= 0 && index < itemList.size();
   }
 }

@@ -10,7 +10,8 @@ import com.ns.greg.basearchitecture.DemoActivity;
 import com.ns.greg.basearchitecture.R;
 import com.ns.greg.basearchitecture.hook.ThreadExecutor;
 import com.ns.greg.basearchitecture.di.component.DemoComponent;
-import com.ns.greg.library.base_architecture.network.OkHttpManager;
+import com.ns.greg.library.base_architecture.di.HasComponent;
+import com.ns.greg.library.base_architecture.module.OkHttpManager;
 import com.ns.greg.library.fasthook.BaseRunnable;
 import com.ns.greg.library.fasthook.functions.EasyRun0;
 import javax.inject.Inject;
@@ -20,13 +21,13 @@ import javax.inject.Inject;
  * @since 2017/8/3
  */
 
-public class SignUpFragment extends Fragment {
+public class SignUpFragment extends Fragment implements HasComponent<DemoComponent> {
 
   @Inject ThreadExecutor threadExecutor;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getExecutorComponent().inject(this);
+    getComponent().inject(this);
   }
 
   @Nullable @Override
@@ -53,10 +54,10 @@ public class SignUpFragment extends Fragment {
   }
 
   private OkHttpManager getOkHttpManager() {
-    return getExecutorComponent().activity().getOkHttpManager();
+    return getComponent().activity().getOkHttpManager();
   }
 
-  private DemoComponent getExecutorComponent() {
+  @Override public DemoComponent getComponent() {
     return ((DemoActivity) getActivity()).getComponent();
   }
 }
