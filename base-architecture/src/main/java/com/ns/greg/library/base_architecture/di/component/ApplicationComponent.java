@@ -17,7 +17,10 @@ public interface ApplicationComponent {
 
   void inject(BaseActivity baseActivity);
 
-  // Exposed to sub-graphs
+  /*--------------------------------
+   * Exposed to sub-graphs
+   *-------------------------------*/
+
   SharedPreferenceManager sharedPreferenceManger();
 
   OkHttpManager okHttpManager();

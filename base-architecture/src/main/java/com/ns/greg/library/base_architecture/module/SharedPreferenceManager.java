@@ -23,7 +23,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param defaultValue default value
    */
-  public String getPrefString(String key, String defaultValue) {
+  public String getString(String key, String defaultValue) {
     return sharedPreferences.getString(key, defaultValue);
   }
 
@@ -33,7 +33,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param value stored value
    */
-  public void setPrefString(String key, String value) {
+  public void setString(String key, String value) {
     sharedPreferences.edit().putString(key, value).apply();
   }
 
@@ -44,7 +44,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param defaultValue default value
    */
-  public boolean getPrefBoolean(String key, boolean defaultValue) {
+  public boolean getBoolean(String key, boolean defaultValue) {
     return sharedPreferences.getBoolean(key, defaultValue);
   }
 
@@ -54,7 +54,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param value stored value
    */
-  public void setPrefBoolean(String key, boolean value) {
+  public void setBoolean(String key, boolean value) {
     sharedPreferences.edit().putBoolean(key, value).apply();
   }
 
@@ -65,7 +65,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param defaultValue default value
    */
-  public int getPrefInt(String key, int defaultValue) {
+  public int getInt(String key, int defaultValue) {
     return sharedPreferences.getInt(key, defaultValue);
   }
 
@@ -75,7 +75,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param value stored value
    */
-  public void setPrefInt(String key, int value) {
+  public void setInt(String key, int value) {
     sharedPreferences.edit().putInt(key, value).apply();
   }
 
@@ -86,7 +86,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param defaultValue default value
    */
-  public float getPrefFloat(String key, float defaultValue) {
+  public float getFloat(String key, float defaultValue) {
     return sharedPreferences.getFloat(key, defaultValue);
   }
 
@@ -96,7 +96,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param value stored value
    */
-  public void setPrefFloat(String key, float value) {
+  public void setFloat(String key, float value) {
     sharedPreferences.edit().putFloat(key, value).apply();
   }
 
@@ -107,7 +107,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param defaultValue default value
    */
-  public long getPrefLong(String key, long defaultValue) {
+  public long getLong(String key, long defaultValue) {
     return sharedPreferences.getLong(key, defaultValue);
   }
 
@@ -117,7 +117,7 @@ import javax.inject.Singleton;
    * @param key specific key
    * @param value stored value
    */
-  public void setSettingLong(String key, long value) {
+  public void setLong(String key, long value) {
     sharedPreferences.edit().putLong(key, value).apply();
   }
 

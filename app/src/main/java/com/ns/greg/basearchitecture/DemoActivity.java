@@ -50,7 +50,7 @@ public class DemoActivity extends BaseActivity implements HasComponent<DemoCompo
   private void sharedPreferenceDemo() {
     String demo = getSharedPreferenceManager().getString("DEMO", "");
     if (demo.isEmpty()) {
-      getSharedPreferenceManager().putString("DEMO", "Dagger is interesting");
+      getSharedPreferenceManager().setString("DEMO", "Dagger is interesting");
     }
 
     Toast.makeText(getApplicationContext(), demo, Toast.LENGTH_SHORT).show();
