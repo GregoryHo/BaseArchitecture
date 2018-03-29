@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 
-def ext = rootProject.extensions.getByName("ext");
-
 repositories {
   maven {
     url 'https://dl.bintray.com/gregoryho/maven'
@@ -9,11 +7,11 @@ repositories {
 }
 
 android {
-  compileSdkVersion ext["compileSdkVersion"]
-  buildToolsVersion ext["buildToolsVersion"]
+  compileSdkVersion configs.compileSdkVersion
+  buildToolsVersion configs.buildToolsVersion
   defaultConfig {
-    minSdkVersion ext["minSdkVersion"]
-    targetSdkVersion ext["targetSdkVersion"]
+    minSdkVersion configs.minSdkVersion
+    targetSdkVersion configs.targetSdkVersion
     versionCode 1
     versionName "1.0"
 
@@ -26,33 +24,27 @@ android {
     }
   }
   compileOptions {
-    sourceCompatibility ext["sourceCompatibility"]
-    targetCompatibility ext["sourceCompatibility"]
+    sourceCompatibility configs.sourceCompatibility
+    targetCompatibility configs.targetCompatibility
   }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
   // Android dependencies
-  compile ext["supportDependencies"]["appCompat"]
-
-  // Google dependencies
-  // Dagger
-  compile ext["googleDependencies"]["dagger"]
-  annotationProcessor ext["googleDependencies"]["daggerProcessor"]
-  compile ext["googleDependencies"]["daggerAndroid"]
-  compile ext["googleDependencies"]["daggerAndroidSupport"]
-  annotationProcessor ext["googleDependencies"]["daggerAndroidProcessor"]
-  // Gson
-  compile ext["googleDependencies"]["gson"]
-
-
+  implementation deps.android.appCompat
+  // Dagger dependencies
+  implementation deps.google.dagger
+  annotationProcessor deps.google.daggerProcessor
+  implementation deps.google.daggerAndroid
+  implementation deps.google.daggerAndroidSupport
+  annotationProcessor deps.google.daggerAndroidProcessor
+  // Gson dependencies
+  implementation deps.google.gson
   // OkHttp dependencies
-  compile ext["squareDependencies"]["okHttp"]
-
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+  implementation deps.square.okHttp
+  androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  testCompile 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.12'
 }
